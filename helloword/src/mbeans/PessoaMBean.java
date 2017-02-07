@@ -27,7 +27,7 @@ public class PessoaMBean {
 	}
 	
 	public String adicionar(){
-		return "cadastro";
+		return "cadastro_sucesso";
 	}
 }
 

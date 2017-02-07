@@ -4,16 +4,33 @@
     xmlns:p="http://primefaces.org/ui">  
   
     <h:head>  
-  		<!-- Resultado -->
-  		<p:outputLabel>IMC</p:outputLabel>
+  		<!-- Titulo -->
+  		<p:outputLabel>Cadastrar funcionário</p:outputLabel>
     </h:head>  
       
-    <h:body>
+    <h:body>      
     	<h:form>
-    		<p:outputLabel value = "Funcionário cadastrado com sucesos!" /><br/>
-    		<p:outputLabel value = "#{pessoaMBean.pessoa.toString()}" />
+    		<!-- message erro -->
+    		<p:messages id="messages" showDetail="false" autoUpdate="true" />
+    		<!-- Dados pessoais -->
+    		<p:outputLabel value = "Nome " />
+			<p:inputText required = "true" label = "Nome" id = "nome" value="#{pessoaMBean.pessoa.nome}" style="width: 100px;"/>
+			
+			
+			<p:outputLabel value = " Sobrenome " />
+			<p:inputText required = "true" label = "Sobrenome" id = "sobrenome" value="#{pessoaMBean.pessoa.sobrenome}" style = "width: 100px;" />
+			<br/>
+    	
+    		<!-- Dados para cargo e salário -->
+    		<p:outputLabel value = "Cargo " />
+    		<p:inputText required = "true" label = "Cargo" id = "cargo" value = "#{pessoaMBean.pessoa.cargo}" style = "width: 100px;"/>
     		
-    		<p:commandButton value = "Adicionar outro funcionário" action = "index"/>
+    		<p:outputLabel value = " Salário " />
+    		<p:inputNumber required = "true" label = "Salario" id = "salario" value = "#{pessoaMBean.pessoa.salario}" style = "width: 100px;" />
+    		<br/>
+    		
+    		<p:commandButton value = "Adicionar" action = "#{pessoaMBean.adicionar()}"/>
+    		<p:commandButton value = "Voltar" immediate = "true" action = "index"/>
     	</h:form>
     </h:body>  
 </html>
