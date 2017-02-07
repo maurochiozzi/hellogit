@@ -27,6 +27,7 @@ public class PessoaMBean {
 	}
 	
 	public String adicionar(){
+		// Cadastra funcionario no banco de dados
 		return "cadastro_sucesso";
 	}
 }
