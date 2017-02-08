@@ -1,13 +1,20 @@
 package processador;
 
+import DAO.PessoaDAO;
 import dominio.Pessoa;
 
 public class PessoaProcessador {	
 	public void salvar(Pessoa pessoa){
-		validate();
+		PessoaDAO pessoaDao = new PessoaDAO();
+		
+		if(validate() == true){
+			pessoaDao.salvar(pessoa);
+		}
+		
+		
 	}
 	
-	public void validate(){
-		
+	public boolean validate(){
+		return true;
 	}
 }

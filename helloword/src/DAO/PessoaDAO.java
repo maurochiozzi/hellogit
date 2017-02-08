@@ -1,11 +1,17 @@
 package DAO;
 
+import org.hibernate.Session;
+import org.hibernate.Transaction;
+
 import dominio.Pessoa;
 
 public class PessoaDAO {
 		
-	public void salvar(){
-		
+	public void salvar(Pessoa pessoa){
+		Session session = HibernateUtil.getSessionFactory().openSession();
+		Transaction t = session.beginTransaction();
+		session.save(pessoa);
+		t.commit();
 	}
 	
 	public void consultarByName(String nome){

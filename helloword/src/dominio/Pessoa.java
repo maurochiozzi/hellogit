@@ -1,17 +1,22 @@
 package dominio;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.Entity;
+import javax.persistence.Id;
 import javax.persistence.Table;
 
+@SuppressWarnings("serial")
 @Entity
 @Table(name = "Funcionarios")
-public class Pessoa {
+public class Pessoa implements Serializable{
 	private String nome;
 	private String sobrenome;
 	private String cargo;
+	
+	@Id
 	private String CPF;
 	private Double salario;
 	
