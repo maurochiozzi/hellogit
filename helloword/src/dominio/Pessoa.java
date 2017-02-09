@@ -6,8 +6,6 @@ import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -17,8 +15,8 @@ import javax.persistence.Table;
 public class Pessoa implements Serializable{
 	
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
-	private String CPF;
+	@Column(name="cpf", nullable=false)
+	private String cpf;
 	
 	@Column(name="nome", nullable=false)
 	private String nome;
@@ -33,11 +31,11 @@ public class Pessoa implements Serializable{
 	private Double salario;
 	
 	public String getCPF() {
-		return CPF;
+		return cpf;
 	}
 
-	public void setCPF(String CPF) {
-		this.CPF = CPF;
+	public void setCPF(String cpf) {
+		this.cpf = cpf;
 	}
 	
 	public String getNome() {
@@ -80,7 +78,9 @@ public class Pessoa implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Pessoa [nome=" + nome + ", sobrenome=" + sobrenome + ", cargo=" + cargo + ", salario=" + salario + "]";
+		return "Pessoa [cpf=" + cpf + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cargo=" + cargo + ", salario="
+				+ salario + "]";
 	}
+
 
 }

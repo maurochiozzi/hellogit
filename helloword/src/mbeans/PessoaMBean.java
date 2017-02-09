@@ -30,6 +30,7 @@ public class PessoaMBean {
 	public String adicionar(){
 		// Cadastra funcionario no banco de dados
 		PessoaProcessador pessoaProcessador = new PessoaProcessador();
+		System.out.println(this.pessoa.toString());
 		
 		pessoaProcessador.salvar(this.pessoa);
 		
