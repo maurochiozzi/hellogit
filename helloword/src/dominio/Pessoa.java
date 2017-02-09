@@ -4,20 +4,32 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
 @SuppressWarnings("serial")
 @Entity
-@Table(name = "Funcionarios")
+@Table(name = "pessoa", schema="empresa")
 public class Pessoa implements Serializable{
-	private String nome;
-	private String sobrenome;
-	private String cargo;
 	
 	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
 	private String CPF;
+	
+	@Column(name="nome", nullable=false)
+	private String nome;
+	
+	@Column(name="sobrenome", nullable=false)
+	private String sobrenome;
+	
+	@Column(name="cargo", nullable=false)
+	private String cargo;
+	
+	@Column(name="salario", nullable=false)
 	private Double salario;
 	
 	public String getCPF() {
