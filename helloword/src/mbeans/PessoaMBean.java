@@ -30,11 +30,28 @@ public class PessoaMBean {
 	public String adicionar(){
 		// Cadastra funcionario no banco de dados
 		PessoaProcessador pessoaProcessador = new PessoaProcessador();
-		System.out.println(this.pessoa.toString());
-		
+			
 		pessoaProcessador.salvar(this.pessoa);
 		
 		return "cadastro_sucesso";
+	}
+	
+	public String consultar(){
+		PessoaProcessador pessoaProcessador = new PessoaProcessador();
+		
+		pessoaProcessador.find(this.pessoa);
+		
+		return("resultados");
+	}
+	
+	public String remover(){
+		PessoaProcessador pessoaProcessador = new PessoaProcessador();
+		
+		if(pessoaProcessador.remover(this.pessoa)){
+			return "removido";
+		}else{
+			return "erro";
+		}
 	}
 }
 

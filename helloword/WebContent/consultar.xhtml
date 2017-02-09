@@ -16,7 +16,7 @@
 			<p:inputNumber required = "true" label = "CPF" id = "cpf" value="#{pessoaMBean.pessoa.CPF}" style="width: 100px;"/>
 			<br/>
 			
-    		<p:commandButton value = "Consultar Funcionário(s)" action = "colsultar"/>
+    		<p:commandButton value = "Consultar Funcionário(s)" action = "#{pessoaMBean.consultar()"/>
     		<p:commandButton value = "Voltar" action = "index" immediate = "true"/>
     	</h:form>
     </h:body>  

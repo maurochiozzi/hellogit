@@ -39,6 +39,7 @@ public class PessoaDAO {
 		Transaction t = session.beginTransaction();
 		session.save(pessoa);
 		t.commit();
+		session.close();
 	}
 
 	public void atualizar(Pessoa pessoa){
@@ -46,6 +47,7 @@ public class PessoaDAO {
 		Transaction t = session.beginTransaction();
 		session.update(pessoa);
 		t.commit();
+		session.close();
 	}
 	
 	public void remover(Pessoa pessoa){
@@ -53,6 +55,7 @@ public class PessoaDAO {
 		Transaction t = session.beginTransaction();
 		session.delete(pessoa);
 		t.commit();
+		session.close();
 	}
 	
 	@SuppressWarnings("unchecked")
@@ -61,6 +64,7 @@ public class PessoaDAO {
 		Transaction t = session.beginTransaction();
 		List<Pessoa> pessoas = session.createQuery("from Pessoa").getResultList();
 		t.commit();
+		session.close();
 		
 		return pessoas;
 	}
@@ -72,6 +76,7 @@ public class PessoaDAO {
 		Transaction t = session.beginTransaction();
 		pessoa = session.load(Pessoa.class, cpf);
 		t.commit();
+		session.close();
 		
 		return pessoa;
 	}
@@ -82,6 +87,7 @@ public class PessoaDAO {
 		Transaction t = session.beginTransaction();
 		List<Pessoa> pessoas = session.createQuery("SELECT p FROM Pessoa p WHERE p.nome = '" + nome + "'").getResultList();
 		t.commit();
+		session.close();
 		
 		return pessoas;
 	}		
