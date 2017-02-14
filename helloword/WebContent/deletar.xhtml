@@ -15,12 +15,7 @@
     		<p:outputLabel value = "CPF " />
 			<p:inputNumber label = "CPF" id = "cpf" value="#{pessoaMBean.pessoa.CPF}" style="width: 100px;"/>
 			<br/>
-			
-			<p:outputLabel value = "e/ou"/><br/>
-			<p:outputLabel value = "Nome "/>
-			<p:inputNumber label = "nome" id = "Nome" value="#{pessoaMBean.pessoa.nome}" style="width: 100px;"/>
-			<br/>
-						
+									
     		<p:commandButton value = "Deletar Funcionário(s)" action = "#{pessoaMBean.remover()}"/>
     		<p:commandButton value = "Voltar" action = "index" immediate = "true"/>
     	</h:form>

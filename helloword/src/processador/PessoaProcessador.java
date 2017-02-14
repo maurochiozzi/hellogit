@@ -1,7 +1,5 @@
 package processador;
 
-import java.util.List;
-
 import DAO.PessoaDAO;
 import dominio.Pessoa;
 
@@ -12,26 +10,19 @@ public class PessoaProcessador {
 		if(validate(pessoa) == true){
 			pessoaDao.salvar(pessoa);
 		}
-		
-		
 	}
 	
 	public boolean validate(Pessoa pessoa){
 		return true;
 	}
 
-	@SuppressWarnings("null")
-	public List<Pessoa> find(Pessoa pessoa) {
+	public Pessoa find(String CPF) {
 		PessoaDAO pessoaDao = new PessoaDAO();
-		List<Pessoa> pessoas = null;
+		Pessoa pessoaEncontrada;
 		
-		if(pessoa.getCPF() != null){
-			pessoas.add(pessoaDao.findByCPF(pessoa.getCPF()));
-		}else{
-			pessoas = pessoaDao.findByName(pessoa.getNome());
-		}
+		pessoaEncontrada = pessoaDao.findByCPF(CPF);
 		
-		return pessoas;
+		return pessoaEncontrada;
 	}
 	
 	public boolean remover(Pessoa pessoa){

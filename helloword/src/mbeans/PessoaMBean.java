@@ -1,19 +1,26 @@
 package mbeans;
 
+import java.util.List;
+
 import javax.faces.bean.ManagedBean;
-import javax.faces.bean.RequestScoped;
+import javax.faces.bean.SessionScoped;
 
 import dominio.Pessoa;
 import processador.PessoaProcessador;
 
+/**
+ * @author MChiozzi
+ *
+ */
 @ManagedBean(eager = true)
-@RequestScoped
+@SessionScoped
 public class PessoaMBean {
 	
 	/**
 	 * A pessoa a ser cadastrada
 	 */
 	Pessoa pessoa = new Pessoa();
+	List<Pessoa> pessoas;
 	
 	public PessoaMBean(){
 		System.out.println("Iniciou");
@@ -39,9 +46,15 @@ public class PessoaMBean {
 	public String consultar(){
 		PessoaProcessador pessoaProcessador = new PessoaProcessador();
 		
-		pessoaProcessador.find(this.pessoa);
+		Pessoa pessoaVerif = pessoaProcessador.find(this.pessoa.getCPF());
 		
-		return("resultados");
+		if(pessoaVerif != null){
+			this.pessoa = pessoaVerif;
+			this.pessoa.toString();
+			return("resultado_consulta");
+		}else{
+			return ("erro");
+		}
 	}
 	
 	public String remover(){

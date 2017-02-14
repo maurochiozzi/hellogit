@@ -16,7 +16,7 @@ public class Pessoa implements Serializable{
 	
 	@Id
 	@Column(name="cpf", nullable=false)
-	private String cpf;
+	private String CPF;
 	
 	@Column(name="nome", nullable=false)
 	private String nome;
@@ -31,11 +31,11 @@ public class Pessoa implements Serializable{
 	private Double salario;
 	
 	public String getCPF() {
-		return cpf;
+		return CPF;
 	}
 
 	public void setCPF(String cpf) {
-		this.cpf = cpf;
+		this.CPF = cpf;
 	}
 	
 	public String getNome() {
@@ -78,7 +78,7 @@ public class Pessoa implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Pessoa [cpf=" + cpf + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cargo=" + cargo + ", salario="
+		return "Pessoa [cpf=" + CPF + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cargo=" + cargo + ", salario="
 				+ salario + "]";
 	}
 

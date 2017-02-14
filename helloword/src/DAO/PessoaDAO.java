@@ -2,17 +2,19 @@ package DAO;
 
 import java.util.List;
 
+import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import dominio.Pessoa;
 
 public class PessoaDAO {
-	/*
+	
 	public static void main(String[] args) {
 		System.out.println("teste");
 		Pessoa p = new Pessoa();
-		String cpf = "1332316";
+		List<Pessoa> pessoas;
+		String cpf = "1212";
 		
 		p.setCPF(cpf);
 		p.setCargo("aSDsd");
@@ -27,12 +29,16 @@ public class PessoaDAO {
 		//System.out.println("Salvo");
 		//dao.remover(p);
 		
-		//Pessoa p1 =	dao.consultarByCPF(cpf);
+		//Pessoa p1 =	dao.findByCPF(cpf);
 		//System.out.println(p1.toString());
-		dao.findByName("asfa");
-		//dao.findAll();
+		//dao.findByName("asfa");
+		pessoas = dao.findAll();
+		
+		for(Pessoa i : pessoas){
+			System.out.println(i.toString());
+		}
 	}
-	*/
+	
 	
 	public void salvar(Pessoa pessoa){
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -58,11 +64,10 @@ public class PessoaDAO {
 		session.close();
 	}
 	
-	@SuppressWarnings("unchecked")
 	public List<Pessoa> findAll(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		List<Pessoa> pessoas = session.createQuery("from Pessoa").getResultList();
+		List<Pessoa> pessoas = session.createQuery("SELECT * FROM Pessoa").getResultList();
 		t.commit();
 		session.close();
 		
@@ -76,6 +81,8 @@ public class PessoaDAO {
 		Transaction t = session.beginTransaction();
 		pessoa = session.load(Pessoa.class, cpf);
 		t.commit();
+		
+		Hibernate.initialize(pessoa);
 		session.close();
 		
 		return pessoa;
