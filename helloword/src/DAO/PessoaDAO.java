@@ -2,14 +2,13 @@ package DAO;
 
 import java.util.List;
 
-import org.hibernate.Hibernate;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 
 import dominio.Pessoa;
 
 public class PessoaDAO {
-	
+	/*
 	public static void main(String[] args) {
 		System.out.println("teste");
 		Pessoa p = new Pessoa();
@@ -29,16 +28,16 @@ public class PessoaDAO {
 		//System.out.println("Salvo");
 		//dao.remover(p);
 		
-		//Pessoa p1 =	dao.findByCPF(cpf);
-		//System.out.println(p1.toString());
-		//dao.findByName("asfa");
-		pessoas = dao.findAll();
+		Pessoa p1 =	dao.findByCPF(cpf);
+		System.out.println(p1.toString());
+		//pessoas = dao.findByName("asfa");
+		//pessoas = dao.findAll();
 		
 		for(Pessoa i : pessoas){
 			System.out.println(i.toString());
 		}
 	}
-	
+	*/
 	
 	public void salvar(Pessoa pessoa){
 		Session session = HibernateUtil.getSessionFactory().openSession();
@@ -64,10 +63,11 @@ public class PessoaDAO {
 		session.close();
 	}
 	
+	@SuppressWarnings("unchecked")
 	public List<Pessoa> findAll(){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		List<Pessoa> pessoas = session.createQuery("SELECT * FROM Pessoa").getResultList();
+		List<Pessoa> pessoas = session.createQuery("FROM Pessoa").getResultList();
 		t.commit();
 		session.close();
 		
@@ -79,10 +79,10 @@ public class PessoaDAO {
 		
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		pessoa = session.load(Pessoa.class, cpf);
+		pessoa = session.get(Pessoa.class, cpf);
 		t.commit();
 		
-		Hibernate.initialize(pessoa);
+		//Hibernate.initialize(pessoa);
 		session.close();
 		
 		return pessoa;
@@ -92,7 +92,13 @@ public class PessoaDAO {
 	public List<Pessoa> findByName(String nome){
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
-		List<Pessoa> pessoas = session.createQuery("SELECT p FROM Pessoa p WHERE p.nome = '" + nome + "'").getResultList();
+		
+		//List<Object[]> 
+		List<Pessoa> pessoas = session.createQuery(
+				" SELECT p.nome, p.cpf, u.nome "
+				+ "FROM Pessoa p "
+				+" JOIN p.unidade u "		
+				+ "WHERE p.nome = '" + nome + "'").getResultList();
 		t.commit();
 		session.close();
 		

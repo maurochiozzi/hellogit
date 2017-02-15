@@ -1,5 +1,6 @@
 package mbeans;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.faces.bean.ManagedBean;
@@ -15,7 +16,6 @@ import processador.PessoaProcessador;
 @ManagedBean(eager = true)
 @SessionScoped
 public class PessoaMBean {
-	
 	/**
 	 * A pessoa a ser cadastrada
 	 */
@@ -35,26 +35,46 @@ public class PessoaMBean {
 	}
 	
 	public String adicionar(){
-		// Cadastra funcionario no banco de dados
 		PessoaProcessador pessoaProcessador = new PessoaProcessador();
-			
 		pessoaProcessador.salvar(this.pessoa);
 		
+		//FacesContext.getCurrentInstance().getExternalContext().getSession(arg0)
 		return "cadastro_sucesso";
 	}
 	
-	public String consultar(){
+	public List<Pessoa> getPessoas() {
+		return pessoas;
+	}
+
+	public void setPessoas(List<Pessoa> pessoas) {
+		this.pessoas = pessoas;
+	}
+
+	public String consultarByCPF(){
 		PessoaProcessador pessoaProcessador = new PessoaProcessador();
 		
-		Pessoa pessoaVerif = pessoaProcessador.find(this.pessoa.getCPF());
+		Pessoa pessoaVerif = pessoaProcessador.findByCPF(this.pessoa.getCPF());
 		
 		if(pessoaVerif != null){
-			this.pessoa = pessoaVerif;
-			this.pessoa.toString();
+			pessoas = new ArrayList<Pessoa>();
+			this.pessoas.add(pessoaVerif);
 			return("resultado_consulta");
 		}else{
 			return ("erro");
 		}
+	}
+	
+	public String consultarByNome(){
+		PessoaProcessador pessoaProcessador = new PessoaProcessador();
+		
+		pessoas = pessoaProcessador.findByNome(this.pessoa.getNome());
+		
+		if(!pessoas.isEmpty()){
+			return("resultado_consulta");
+		}else{
+			return ("erro");
+		}
+		
 	}
 	
 	public String remover(){

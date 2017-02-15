@@ -10,13 +10,16 @@
       
     <h:body>
     	<h:form>
-    		<!-- message erro -->
-    		<p:messages id="messages" showDetail="false" autoUpdate="true" />
-    		<p:outputLabel value = "CPF " />
-			<p:inputNumber required = "true" label = "CPF" id = "cpf" value="#{pessoaMBean.pessoa.CPF}" style="width: 100px;"/>
+    		<p:outputLabel value = "CPF" />
+			<p:inputNumber label = "CPF" id = "cpf" value="#{pessoaMBean.pessoa.CPF}" style="width: 100px;"/>
+			<p:commandButton value = "Consultar por CPF" action = "#{pessoaMBean.consultarByCPF()}"/>
 			<br/>
 			
-    		<p:commandButton value = "Consultar Funcionário" action = "#{pessoaMBean.consultar()}"/>
+			<p:outputLabel value = "Nome" />
+			<p:inputText label = "nome" id = "nome" value="#{pessoaMBean.pessoa.nome}" style="width: 100px;"/>
+			<p:commandButton value = "Consultar por nome" action = "#{pessoaMBean.consultarByNome()}"/>
+			<br/>
+    		
     		<p:commandButton value = "Voltar" action = "index" immediate = "true"/>
     	</h:form>
     </h:body>  

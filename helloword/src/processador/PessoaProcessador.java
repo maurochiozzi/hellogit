@@ -1,5 +1,7 @@
 package processador;
 
+import java.util.List;
+
 import DAO.PessoaDAO;
 import dominio.Pessoa;
 
@@ -16,13 +18,26 @@ public class PessoaProcessador {
 		return true;
 	}
 
-	public Pessoa find(String CPF) {
+	public Pessoa findByCPF(String CPF) {
 		PessoaDAO pessoaDao = new PessoaDAO();
 		Pessoa pessoaEncontrada;
 		
 		pessoaEncontrada = pessoaDao.findByCPF(CPF);
 		
 		return pessoaEncontrada;
+	}
+	
+	public List<Pessoa> findByNome(String nome){
+		PessoaDAO pessoaDao = new PessoaDAO();
+		List<Pessoa> pessoas;
+		
+		pessoas = pessoaDao.findByName(nome);
+		
+		if(!pessoas.isEmpty()){
+			return pessoas;
+		}else{
+			return null;
+		}
 	}
 	
 	public boolean remover(Pessoa pessoa){
