@@ -93,11 +93,9 @@ public class PessoaDAO {
 		Session session = HibernateUtil.getSessionFactory().openSession();
 		Transaction t = session.beginTransaction();
 		
-		//List<Object[]> 
 		List<Pessoa> pessoas = session.createQuery(
-				" SELECT p.nome, p.cpf, u.nome "
-				+ "FROM Pessoa p "
-				+" JOIN p.unidade u "		
+				" SELECT p  "
+				+ "FROM Pessoa p "		
 				+ "WHERE p.nome = '" + nome + "'").getResultList();
 		t.commit();
 		session.close();

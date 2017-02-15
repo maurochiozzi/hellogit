@@ -6,28 +6,41 @@
     <h:head>  
   		<!-- Titulo -->
   		<p:outputLabel>Cadastrar funcionário</p:outputLabel>
-    </h:head>  
+    </h:head>
       
     <h:body>      
     	<h:form>
     		<!-- message erro -->
     		<p:messages id="messages" showDetail="false" autoUpdate="true" />
+    		
     		<!-- Dados pessoais -->
     		<p:outputLabel value = "Nome " />
 			<p:inputText required = "true" label = "Nome" id = "nome" value="#{pessoaMBean.pessoa.nome}" style="width: 100px;"/>
-			
-			
+						
 			<p:outputLabel value = " Sobrenome " />
 			<p:inputText required = "true" label = "Sobrenome" id = "sobrenome" value="#{pessoaMBean.pessoa.sobrenome}" style = "width: 100px;" />
 			<br/>
 			
+			<!-- Sexo -->
+			<p:selectOneRadio id="sexo" value="#{pessoaMBean.pessoa.sexo}">
+            	<f:selectItem itemLabel="Feminino" itemValue="F" />
+            	<f:selectItem itemLabel="Masculino" itemValue="M" />
+       		</p:selectOneRadio>
+       		<br/>
+       		
 			<p:outputLabel value = "CPF " />
 			<p:inputNumber required = "true" label = "CPF" id = "cpf" value = "#{pessoaMBean.pessoa.CPF}" style = "width: 100px;" />
 			<br/>
     	
     		<!-- Dados para cargo e salário -->
     		<p:outputLabel value = "Cargo " />
-    		<p:inputText required = "true" label = "Cargo" id = "cargo" value = "#{pessoaMBean.pessoa.cargo}" style = "width: 100px;"/>
+    		<p:selectOneMenu id="cargo" value="#{pessoaMBean.pessoa.cargo}" style="width:125px">
+	            <f:selectItem itemLabel="Gerente" itemValue="Gerente" />
+	            <f:selectItem itemLabel="Coordenador" itemValue="Coordenador" />
+	            <f:selectItem itemLabel="Auxiliar" itemValue="Auxiliar" />
+	            <f:selectItem itemLabel="Aprendiz" itemValue="Aprendiz" />
+        	</p:selectOneMenu>
+    		<br/>
     		
     		<p:outputLabel value = " Salário " />
     		<p:inputNumber required = "true" label = "Salario" id = "salario" value = "#{pessoaMBean.pessoa.salario}" style = "width: 100px;" />

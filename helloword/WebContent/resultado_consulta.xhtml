@@ -18,6 +18,10 @@
 			    <p:column headerText="Sobrenome">
 			        <h:outputText value="#{pessoa.sobrenome}" />
 			    </p:column>
+			    
+			    <p:column headerText="Sexo">
+			        <h:outputText value="#{pessoa.getSexo()}" />
+			    </p:column>
 			 
 			    <p:column headerText="CPF">
 			        <h:outputText value="#{pessoa.CPF}" />
@@ -28,7 +32,7 @@
 			    </p:column>
 			    
 			    <p:column headerText="Salario">
-			        <h:outputText value="#{pessoa.cargo}" />
+			        <h:outputText value="#{pessoa.salario}" />
 			    </p:column>
 			</p:dataTable>
     		

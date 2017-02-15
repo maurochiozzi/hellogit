@@ -30,6 +30,25 @@ public class Pessoa implements Serializable{
 	@Column(name="salario", nullable=false)
 	private Double salario;
 	
+	@Column(name = "sexo", nullable = false)
+	private String sexo;
+	
+	public String getFullSexo() {
+		if(this.sexo.equals("M")){
+			return "Masculino";
+		}else{
+			return "Feminino";
+		}
+	}
+	
+	public String getSexo() {
+		return sexo;
+	}
+
+	public void setSexo(String sexo) {
+		this.sexo = sexo.toUpperCase();
+	}
+
 	public String getCPF() {
 		return CPF;
 	}
@@ -78,9 +97,7 @@ public class Pessoa implements Serializable{
 
 	@Override
 	public String toString() {
-		return "Pessoa [cpf=" + CPF + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cargo=" + cargo + ", salario="
-				+ salario + "]";
+		return "Pessoa [CPF=" + CPF + ", nome=" + nome + ", sobrenome=" + sobrenome + ", cargo=" + cargo + ", salario="
+				+ salario + ", sexo=" + sexo + "]";
 	}
-
-
 }
