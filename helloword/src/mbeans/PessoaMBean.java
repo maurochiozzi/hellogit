@@ -50,31 +50,36 @@ public class PessoaMBean {
 		this.pessoas = pessoas;
 	}
 
-	public String consultarByCPF(){
+	public String consultar(int opcao){
+		if(opcao == 1){
+			consultarByCPF();
+		}else{
+			consultarByNome();
+		}
+		
+		if(!pessoas.isEmpty()){
+			return "resultado_consulta";
+		}else{
+			return "erro";
+		}
+	}
+	
+	public void consultarByCPF(){
 		PessoaProcessador pessoaProcessador = new PessoaProcessador();
 		
 		Pessoa pessoaVerif = pessoaProcessador.findByCPF(this.pessoa.getCPF());
 		
 		if(pessoaVerif != null){
 			pessoas = new ArrayList<Pessoa>();
+			pessoa = pessoaVerif;
 			this.pessoas.add(pessoaVerif);
-			return("resultado_consulta");
-		}else{
-			return ("erro");
 		}
 	}
 	
-	public String consultarByNome(){
+	public void consultarByNome(){
 		PessoaProcessador pessoaProcessador = new PessoaProcessador();
 		
 		pessoas = pessoaProcessador.findByNome(this.pessoa.getNome());
-		
-		if(!pessoas.isEmpty()){
-			return("resultado_consulta");
-		}else{
-			return ("erro");
-		}
-		
 	}
 	
 	public String remover(){
@@ -85,6 +90,12 @@ public class PessoaMBean {
 		}else{
 			return "erro";
 		}
+	}
+	
+	public void atualizar(){
+		PessoaProcessador pessoaProcessador = new PessoaProcessador();
+		
+		pessoaProcessador.atualizar(pessoa);
 	}
 }
 

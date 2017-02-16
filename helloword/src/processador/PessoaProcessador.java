@@ -53,4 +53,11 @@ public class PessoaProcessador {
 			return false;
 		}
 	}
+	
+	public void atualizar(Pessoa pessoa){
+		PessoaDAO pessoaDao = new PessoaDAO();
+	
+		pessoaDao.atualizar(pessoa);
+	}
+		
 }

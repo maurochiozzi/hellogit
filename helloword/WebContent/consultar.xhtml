@@ -12,12 +12,12 @@
     	<h:form>
     		<p:outputLabel value = "CPF" />
 			<p:inputNumber label = "CPF" id = "cpf" value="#{pessoaMBean.pessoa.CPF}" style="width: 100px;"/>
-			<p:commandButton value = "Consultar por CPF" action = "#{pessoaMBean.consultarByCPF()}"/>
+			<p:commandButton value = "Consultar por CPF" action = "#{pessoaMBean.consultar(1)}"/>
 			<br/>
 			
 			<p:outputLabel value = "Nome" />
 			<p:inputText label = "nome" id = "nome" value="#{pessoaMBean.pessoa.nome}" style="width: 100px;"/>
-			<p:commandButton value = "Consultar por nome" action = "#{pessoaMBean.consultarByNome()}"/>
+			<p:commandButton value = "Consultar por nome" action = "#{pessoaMBean.consultar(2)}"/>
 			<br/>
     		
     		<p:commandButton value = "Voltar" action = "index" immediate = "true"/>

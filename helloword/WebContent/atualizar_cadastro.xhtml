@@ -11,15 +11,15 @@
     <h:body>
     	<h:form>
     		<p:outputLabel value = "CPF" />
-			<p:inputNumber label = "cpf_procura" id = "cpf_procura" value="#{pessoaMBean.pessoa.CPF}" style="width: 100px;"/>
-			<p:commandButton value = "Consultar CPF" action = "#{pessoaMBean.consultarByCPF()}"/> <br/><br/>
+			<p:inputNumber label = "cpf" id = "cpf_procura" value="#{pessoaMBean.pessoa.CPF}" style="width: 100px;"/>
+			<p:commandButton value = "Consultar CPF" process="@parent:@parent" update="@form" action = "#{pessoaMBean.consultarByCPF()}"/><br/><br/>
 			
 			<!-- Dados pessoais -->
     		<p:outputLabel value = "Nome " />
-			<p:inputText required = "true" label = "Nome" id = "nome" value="#{pessoaMBean.pessoa.nome}" style="width: 100px;"/>
-						
+			<p:inputText label = "Nome" id = "nome" value="#{pessoaMBean.pessoa.nome}" style="width: 100px;"/>
+			
 			<p:outputLabel value = " Sobrenome " />
-			<p:inputText required = "true" label = "Sobrenome" id = "sobrenome" value="#{pessoaMBean.pessoa.sobrenome}" style = "width: 100px;" />
+			<p:inputText label = "Sobrenome" id = "sobrenome" value="#{pessoaMBean.pessoa.sobrenome}" style = "width: 100px;" />
 			<br/>
 			
 			<!-- Sexo -->
@@ -29,10 +29,6 @@
        		</p:selectOneRadio>
        		<br/>
        		
-			<p:outputLabel value = "CPF " />
-			<p:inputNumber required = "true" label = "CPF" id = "cpf" value = "#{pessoaMBean.pessoa.CPF}" style = "width: 100px;" />
-			<br/>
-    	
     		<!-- Dados para cargo e salário -->
     		<p:outputLabel value = "Cargo " />
     		<p:selectOneMenu id="cargo" value="#{pessoaMBean.pessoa.cargo}" style="width:125px">
@@ -44,11 +40,11 @@
     		<br/>
     		
     		<p:outputLabel value = " Salário " />
-    		<p:inputNumber required = "true" label = "Salario" id = "salario" value = "#{pessoaMBean.pessoa.salario}" style = "width: 100px;" />
+    		<p:inputNumber label = "Salario" id = "salario" value = "#{pessoaMBean.pessoa.salario}" style = "width: 100px;" />
     		<br/>
-			
-    		
-    		<p:commandButton value = "Voltar" action = "index" immediate = "true"/>
+			 	
+			<p:commandButton value = "Atualizar" action = "#{pessoaMBean.atualizar()}"/>	
+    		<p:commandButton value = "Voltar" action = "index"/>
     	</h:form>
     </h:body>  
 </html>
