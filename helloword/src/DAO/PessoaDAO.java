@@ -7,12 +7,13 @@ import org.hibernate.Transaction;
 
 import dominio.Pessoa;
 
+
 public class PessoaDAO {
-	/*
+	
 	public static void main(String[] args) {
 		System.out.println("teste");
 		Pessoa p = new Pessoa();
-		List<Pessoa> pessoas;
+		//List<Pessoa> pessoas;
 		String cpf = "1212";
 		
 		p.setCPF(cpf);
@@ -32,12 +33,12 @@ public class PessoaDAO {
 		System.out.println(p1.toString());
 		//pessoas = dao.findByName("asfa");
 		//pessoas = dao.findAll();
-		
+		/*
 		for(Pessoa i : pessoas){
 			System.out.println(i.toString());
-		}
+		}*/
 	}
-	*/
+	
 	
 	public void salvar(Pessoa pessoa){
 		Session session = HibernateUtil.getSessionFactory().openSession();

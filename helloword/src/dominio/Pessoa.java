@@ -1,8 +1,6 @@
 package dominio;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -89,8 +87,8 @@ public class Pessoa implements Serializable{
 		this.salario = salario;
 	}
 	
-	public List<String> validate(){
-		List<String> erros = new ArrayList<String>();
+	public String validate(){
+		String erros = new String();
 		
 		return erros;
 	}

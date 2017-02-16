@@ -1,0 +1,54 @@
+<html xmlns="http://www.w3.org/1999/xhtml"  
+    xmlns:h="http://java.sun.com/jsf/html"  
+    xmlns:f="http://java.sun.com/jsf/core"  
+    xmlns:p="http://primefaces.org/ui">  
+  
+    <h:head>  
+  		<!-- Tela boas vindas -->
+  		<p:outputLabel>Atualizar Cadastro!</p:outputLabel>
+    </h:head>  
+      
+    <h:body>
+    	<h:form>
+    		<p:outputLabel value = "CPF" />
+			<p:inputNumber label = "cpf_procura" id = "cpf_procura" value="#{pessoaMBean.pessoa.CPF}" style="width: 100px;"/>
+			<p:commandButton value = "Consultar CPF" action = "#{pessoaMBean.consultarByCPF()}"/> <br/><br/>
+			
+			<!-- Dados pessoais -->
+    		<p:outputLabel value = "Nome " />
+			<p:inputText required = "true" label = "Nome" id = "nome" value="#{pessoaMBean.pessoa.nome}" style="width: 100px;"/>
+						
+			<p:outputLabel value = " Sobrenome " />
+			<p:inputText required = "true" label = "Sobrenome" id = "sobrenome" value="#{pessoaMBean.pessoa.sobrenome}" style = "width: 100px;" />
+			<br/>
+			
+			<!-- Sexo -->
+			<p:selectOneRadio id="sexo" value="#{pessoaMBean.pessoa.sexo}">
+            	<f:selectItem itemLabel="Feminino" itemValue="F" />
+            	<f:selectItem itemLabel="Masculino" itemValue="M" />
+       		</p:selectOneRadio>
+       		<br/>
+       		
+			<p:outputLabel value = "CPF " />
+			<p:inputNumber required = "true" label = "CPF" id = "cpf" value = "#{pessoaMBean.pessoa.CPF}" style = "width: 100px;" />
+			<br/>
+    	
+    		<!-- Dados para cargo e salário -->
+    		<p:outputLabel value = "Cargo " />
+    		<p:selectOneMenu id="cargo" value="#{pessoaMBean.pessoa.cargo}" style="width:125px">
+	            <f:selectItem itemLabel="Gerente" itemValue="Gerente" />
+	            <f:selectItem itemLabel="Coordenador" itemValue="Coordenador" />
+	            <f:selectItem itemLabel="Auxiliar" itemValue="Auxiliar" />
+	            <f:selectItem itemLabel="Aprendiz" itemValue="Aprendiz" />
+        	</p:selectOneMenu>
+    		<br/>
+    		
+    		<p:outputLabel value = " Salário " />
+    		<p:inputNumber required = "true" label = "Salario" id = "salario" value = "#{pessoaMBean.pessoa.salario}" style = "width: 100px;" />
+    		<br/>
+			
+    		
+    		<p:commandButton value = "Voltar" action = "index" immediate = "true"/>
+    	</h:form>
+    </h:body>  
+</html>
